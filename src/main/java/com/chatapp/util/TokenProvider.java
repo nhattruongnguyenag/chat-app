@@ -15,9 +15,9 @@ public class TokenProvider implements Serializable {
     public static final int TOKEN_VALIDITY_IN_MILISECONDS = 3_600_000;
     public static final String JWT_SIGNING_KEY = "com.template";
 
-    public String generateToken(Authentication authentication) {
+    public String generateToken(String subject) {
         return Jwts.builder()
-                .setSubject(authentication.getName())
+                .setSubject(subject)
                 .signWith(SignatureAlgorithm.HS256, JWT_SIGNING_KEY)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + TOKEN_VALIDITY_IN_MILISECONDS))
@@ -28,13 +28,13 @@ public class TokenProvider implements Serializable {
         return getSpecifiedClaim(token, Claims::getSubject);
     }
 
-    public Date getExpirationDateFromToken(String token) {
+    public Date extractExpirationDateFromToken(String token) {
         return getSpecifiedClaim(token, Claims::getExpiration);
     }
 
     public Boolean isTokenNotExpired(String token) {
         final Date currentTime = new Date();
-        final Date expiration = getExpirationDateFromToken(token);
+        final Date expiration = extractExpirationDateFromToken(token);
         return currentTime.before(expiration);
     }
 

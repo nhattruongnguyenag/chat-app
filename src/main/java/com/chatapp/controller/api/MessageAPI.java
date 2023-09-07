@@ -1,6 +1,7 @@
-package com.chatapp.api;
+package com.chatapp.controller.api;
 
-import com.chatapp.dto.MessageDTO;
+import com.chatapp.dto.request.MessageRequestDTO;
+import com.chatapp.dto.response.MessageResponseDTO;
 import com.chatapp.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +16,12 @@ public class MessageAPI {
     private MessageService messageService;
 
     @GetMapping("/messages/{senderId}/{receiverId}")
-    List<MessageDTO> findMessagesBySenderOrReceiver(@PathVariable("senderId") Long senderId, @PathVariable("receiverId") Long receiverId) {
+    List<MessageResponseDTO> findMessagesBySenderOrReceiver(@PathVariable("senderId") Long senderId, @PathVariable("receiverId") Long receiverId) {
         return messageService.findBySenderOrReceiver(senderId, receiverId);
     }
 
     @PostMapping("/messages")
-    MessageDTO save(@RequestBody MessageDTO messageDTO) {
+    MessageRequestDTO save(@RequestBody MessageRequestDTO messageDTO) {
         return messageService.save(messageDTO);
     }
 

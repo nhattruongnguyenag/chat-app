@@ -1,11 +1,12 @@
 package com.chatapp.service;
 
-import com.chatapp.dto.MessageDTO;
+import com.chatapp.dto.request.MessageRequestDTO;
+import com.chatapp.dto.response.MessageResponseDTO;
 
 import java.util.List;
 
 public interface MessageService {
-    List<MessageDTO> findBySenderOrReceiver(Long senderId, Long receiverId);
-    MessageDTO save(MessageDTO messageDTO);
-    MessageDTO delete(Long messageId);
+    List<MessageResponseDTO> findBySenderOrReceiver(Long senderId, Long receiverId);
+    MessageRequestDTO save(MessageRequestDTO messageDTO);
+    MessageRequestDTO delete(Long messageId);
 }

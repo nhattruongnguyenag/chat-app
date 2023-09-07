@@ -2,13 +2,11 @@ package com.chatapp.dto;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class BaseDTO {
     private Long id;
-    private Date createdAt = new Date();
-    private Date updatedAt = new Date();
+    private String createdAt;
+    private String updatedAt;
     private String createdBy;
-    private String modifiedBy;
+    private String updatedBy;
 }

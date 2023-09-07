@@ -1,26 +1,25 @@
 package com.chatapp.controller.socket;
 
-import com.chatapp.dto.MessageDTO;
+import com.chatapp.dto.request.MessageRequestDTO;
+import com.chatapp.dto.response.MessageResponseDTO;
 import com.chatapp.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class MessageSocketController {
     @Autowired
     private MessageService messageService;
 
-    @MessageMapping({"messages/{senderId}/{receiverId}",
-            "messages/{senderId}/{receiverId}/"})
-    @SendTo({"topics/messages/{senderId}/{receiverId}",
-            "topics/messages/{senderId}/{receiverId}/"})
-    public List<MessageDTO> saveMessage(@DestinationVariable("senderId") Long senderId, @DestinationVariable("receiverId") Long receiverId, String content) {
-        MessageDTO messageDTO = new MessageDTO();
+    @MessageMapping({"/messages/{senderId}/{receiverId}", "/messages/{senderId}/{receiverId}/"})
+    @SendTo({"/topic/messages/{senderId}/{receiverId}", "/topic/messages/{senderId}/{receiverId}/"})
+    public List<MessageResponseDTO> saveMessage(@DestinationVariable("senderId") Long senderId, @DestinationVariable("receiverId") Long receiverId, String content) {
+        MessageRequestDTO messageDTO = new MessageRequestDTO();
         messageDTO.setSenderId(senderId);
         messageDTO.setReceiverId(receiverId);
         messageDTO.setContent(content);
@@ -28,11 +27,9 @@ public class MessageSocketController {
         return messageService.findBySenderOrReceiver(messageDTO.getSenderId(), messageDTO.getReceiverId());
     }
 
-    @MessageMapping({"messages/{senderId}/{receiverId}/listen",
-            "messages/{senderId}/{receiverId}/listen/"})
-    @SendTo({"topics/messages/{senderId}/{receiverId}/listen",
-            "topics/messages/{senderId}/{receiverId}/listen/"})
-    public List<MessageDTO> getMessages(@DestinationVariable("senderId") Long senderId, @DestinationVariable("receiverId") Long receiverId) {
+    @MessageMapping({"/messages/{senderId}/{receiverId}/listen", "/messages/{senderId}/{receiverId}/listen/"})
+    @SendTo({"/topic/messages/{senderId}/{receiverId}", "/topic/messages/{senderId}/{receiverId}/"})
+    public List<MessageResponseDTO> getMessages(@DestinationVariable("senderId") Long senderId, @DestinationVariable("receiverId") Long receiverId) {
         return messageService.findBySenderOrReceiver(senderId, receiverId);
     }
 }

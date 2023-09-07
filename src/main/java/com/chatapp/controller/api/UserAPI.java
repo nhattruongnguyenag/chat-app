@@ -1,18 +1,14 @@
 package com.chatapp.controller.api;
 
-import com.chatapp.converter.UserConverter;
+import com.chatapp.converter.request.UserRequestConverter;
 import com.chatapp.dto.AuthTokenDTO;
 import com.chatapp.dto.UserDTO;
-import com.chatapp.dto.request.UserDTORequest;
-import com.chatapp.model.ErrorModel;
-import com.chatapp.repository.UserRepository;
+import com.chatapp.dto.request.UserLoginRequestDTO;
+import com.chatapp.dto.response.UserInfoResponseDTO;
 import com.chatapp.service.UserService;
+import com.chatapp.util.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,26 +17,40 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserAPI {
     @Autowired
-    private UserConverter userConverter;
+    private UserRequestConverter userConverter;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TokenProvider tokenProvider;
 
     @GetMapping({"users", "users/"})
-    public List<UserDTO> findAll() {
+    public List<UserInfoResponseDTO> findAll() {
         return userService.findAll();
     }
 
+    @GetMapping({"users/token/{token}", "users/token/{token}/"})
+    public UserInfoResponseDTO getUserFromToken(@PathVariable("token") String token) {
+        return userService.getUserFromToken(token);
+    }
+
+    @GetMapping({"users/{username}", "users/{username}/"})
+    public UserInfoResponseDTO getUserByUsername(@PathVariable("username") String username) {
+        return userService.getUserByUsername(username);
+    }
+
     @PostMapping({"login", "login/"})
-    ResponseEntity<AuthTokenDTO> login(@RequestBody UserDTORequest userDTORequest) {
+    ResponseEntity<AuthTokenDTO> login(@RequestBody UserLoginRequestDTO userDTORequest) {
         return ResponseEntity.ok(userService.login(userDTORequest));
     }
 
-    @PostMapping(value = {"/users", "/users/"})
-    public UserDTO save(@RequestBody UserDTO userDTO) {
-        return userService.saveOrUpdate(userDTO);
+    @PostMapping({"users", "users/"})
+    public AuthTokenDTO save(@RequestBody UserDTO userDTO) {
+        UserInfoResponseDTO tempUserDTO = userService.saveOrUpdate(userDTO);
+        String token = tokenProvider.generateToken(tempUserDTO.getUsername());
+        return new AuthTokenDTO(token);
     }
 
-    @DeleteMapping({"/users/{id}", "/users/{id}/"})
+    @DeleteMapping({"users/{id}", "users/{id}/"})
     public ResponseEntity delete(@PathVariable("id") Long id) {
         userService.delete(id);
         return ResponseEntity.ok().build();

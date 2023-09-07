@@ -1,9 +1,11 @@
 package com.chatapp.service.impl;
 
-import com.chatapp.converter.UserConverter;
+import com.chatapp.converter.request.UserRequestConverter;
+import com.chatapp.converter.response.UserInfoResponseConverter;
 import com.chatapp.dto.AuthTokenDTO;
 import com.chatapp.dto.UserDTO;
-import com.chatapp.dto.request.UserDTORequest;
+import com.chatapp.dto.request.UserLoginRequestDTO;
+import com.chatapp.dto.response.UserInfoResponseDTO;
 import com.chatapp.entity.UserEntity;
 import com.chatapp.exception.DuplicateUsernameException;
 import com.chatapp.repository.UserRepository;
@@ -26,24 +28,26 @@ public class UserServiceImpl implements UserService {
     @Autowired
     TokenProvider tokenProvider;
     @Autowired
-    private UserConverter userConverter;
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private UserInfoResponseConverter userInfoResponseConverter;
+    @Autowired
+    private UserRequestConverter userConverter;
 
     @Override
-    public List<UserDTO> findAll() {
-        return userConverter.toListDTO(userRepository.findAllByStatusNot((byte) -1));
+    public List<UserInfoResponseDTO> findAll() {
+        return userInfoResponseConverter.toDTOGroup(userRepository.findAllByStatusNot((byte) -1));
     }
 
     @Override
-    public UserDTO findByUsernameAndPassword(String username, String password) {
-        return userConverter.toDTO(userRepository.findOneByUsernameAndPassword(username, password));
+    public UserInfoResponseDTO findByUsernameAndPassword(String username, String password) {
+        return userInfoResponseConverter.toDTO(userRepository.findOneByUsernameAndPassword(username, password));
     }
 
     @Override
-    public UserDTO saveOrUpdate(UserDTO userDTO) {
+    public UserInfoResponseDTO saveOrUpdate(UserDTO userDTO) {
         UserEntity userEntity;
         if (userDTO.getId() != null) {
             if (userRepository.findOneById(userDTO.getId()) == null) {
@@ -55,27 +59,27 @@ public class UserServiceImpl implements UserService {
             }
 
             userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-            userDTO.setStatus((byte) 1);
+            userDTO.setStatus((byte) 0);
         }
 
         userEntity = userConverter.toEntity(userDTO);
 
-        return userConverter.toDTO(userRepository.save(userEntity));
+        return userInfoResponseConverter.toDTO(userRepository.save(userEntity));
     }
 
     @Override
-    public UserDTO changeStatus(Long userId, Byte status) {
+    public UserInfoResponseDTO changeStatus(Long userId, Byte status) {
         UserEntity userEntity = userRepository.findOneById(userId);
         if (userEntity == null) {
             throw new RuntimeException("user_does_not_exists");
         }
         userEntity.setStatus(status);
 
-        return userConverter.toDTO(userRepository.save(userEntity));
+        return userInfoResponseConverter.toDTO(userRepository.save(userEntity));
     }
 
     @Override
-    public UserDTO delete(Long userId) {
+    public UserInfoResponseDTO delete(Long userId) {
         UserEntity userEntity = userRepository.findOneById(userId);
 
         if (userEntity == null) {
@@ -83,20 +87,32 @@ public class UserServiceImpl implements UserService {
         }
 
         userEntity.setStatus((byte) 1);
-        return userConverter.toDTO(userRepository.save(userEntity));
+        return userInfoResponseConverter.toDTO(userRepository.save(userEntity));
     }
 
     @Override
-    public AuthTokenDTO login(UserDTORequest userDTORequest) {
+    public AuthTokenDTO login(UserLoginRequestDTO userLoginRequest) {
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        userDTORequest.getUsername(),
-                        userDTORequest.getPassword()
+                        userLoginRequest.getUsername(),
+                        userLoginRequest.getPassword()
                 )
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        final String token = tokenProvider.generateToken(authentication);
+        final String token = tokenProvider.generateToken(authentication.getName());
         return new AuthTokenDTO(token);
+    }
+
+    @Override
+    public UserInfoResponseDTO getUserFromToken(String token) {
+        String username = tokenProvider.extractUsernameFromToken(token);
+        UserEntity userEntity = userRepository.findOneByUsername(username);
+        return userInfoResponseConverter.toDTO(userEntity);
+    }
+
+    @Override
+    public UserInfoResponseDTO getUserByUsername(String username) {
+        return userInfoResponseConverter.toDTO(userRepository.findOneByUsername(username));
     }
 }

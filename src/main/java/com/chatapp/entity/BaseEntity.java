@@ -17,13 +17,13 @@ public abstract class BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "createddate")
+	@Column(name = "createddate", updatable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	@CreatedDate
-	private Date createdDate;
+	private Date createdAt = new Date();
 	
-	@Column(name = "modifieddate")
+	@Column(name = "modifieddate", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	@LastModifiedDate
-	private Date modifiedDate;
+	private Date updatedAt = new Date();
 	
 	@Column(name = "createdby")
 	@CreatedBy

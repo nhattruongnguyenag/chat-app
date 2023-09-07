@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Service(value = "userCustomService")
 public class CustomizedUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findOneByUsernameAndStatus(username, 1);
+        UserEntity userEntity = userRepository.findOneByUsername(username);
         if (userEntity == null) {
             throw new UsernameNotFoundException("User not found");
         }
