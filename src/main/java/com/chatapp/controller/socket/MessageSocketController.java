@@ -16,19 +16,20 @@ public class MessageSocketController {
     @Autowired
     private MessageService messageService;
 
-    @MessageMapping({"/messages/{senderId}/{receiverId}", "/messages/{senderId}/{receiverId}/"})
-    @SendTo({"/topic/messages/{senderId}/{receiverId}", "/topic/messages/{senderId}/{receiverId}/"})
+    @MessageMapping({"/messages/{senderId}/{receiverId}", "/messages/{receiverId}/{senderId}"})
+    @SendTo({"/topic/messages/{senderId}/{receiverId}", "/topic/messages/{receiverId}/{senderId}"})
     public List<MessageResponseDTO> saveMessage(@DestinationVariable("senderId") Long senderId, @DestinationVariable("receiverId") Long receiverId, String content) {
         MessageRequestDTO messageDTO = new MessageRequestDTO();
         messageDTO.setSenderId(senderId);
         messageDTO.setReceiverId(receiverId);
         messageDTO.setContent(content);
+        messageDTO.setType("plain/text");
         messageService.save(messageDTO);
         return messageService.findBySenderOrReceiver(messageDTO.getSenderId(), messageDTO.getReceiverId());
     }
 
-    @MessageMapping({"/messages/{senderId}/{receiverId}/listen", "/messages/{senderId}/{receiverId}/listen/"})
-    @SendTo({"/topic/messages/{senderId}/{receiverId}", "/topic/messages/{senderId}/{receiverId}/"})
+    @MessageMapping({"/messages/{senderId}/{receiverId}/listen", "/messages/{receiverId}/{senderId}/listen"})
+    @SendTo({"/topic/messages/{senderId}/{receiverId}", "/topic/messages/{receiverId}/{senderId}"})
     public List<MessageResponseDTO> getMessages(@DestinationVariable("senderId") Long senderId, @DestinationVariable("receiverId") Long receiverId) {
         return messageService.findBySenderOrReceiver(senderId, receiverId);
     }

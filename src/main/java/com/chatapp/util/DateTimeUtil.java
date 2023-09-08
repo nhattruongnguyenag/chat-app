@@ -10,7 +10,7 @@ public class DateTimeUtil {
     public static String convertToTimestamp(Date date) {
         String dateFormated = null;
         if (date != null) {
-            SimpleDateFormat dateOutputFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+            SimpleDateFormat dateOutputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             dateFormated = dateOutputFormat.format(date);
         }
         return dateFormated;
