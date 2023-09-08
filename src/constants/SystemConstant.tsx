@@ -30,7 +30,7 @@ export const isDisplayTime = (messages: MessageModel[], index: number): boolean 
     const length = messages.length;
     let nextMessageIndex = -1;
     for (let i = index + 1; i < length; i++) {
-        if (messages[i-1].sender.id === messages[i].sender.id) {
+        if (messages[i].sender.id === messages[index].sender.id) {
             nextMessageIndex = i
             break;
         }
@@ -38,6 +38,7 @@ export const isDisplayTime = (messages: MessageModel[], index: number): boolean 
 
     if (nextMessageIndex != -1) {
         const interval = (new Date(messages[nextMessageIndex].createdAt).getTime() - new Date(messages[index].createdAt).getTime()) / 1000
+        console.log(interval)
         if(interval < 30) {
             return false
         }

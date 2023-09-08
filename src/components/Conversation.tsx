@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
+import { Client } from 'stompjs'
+import { getPrinciple } from '../constants/SystemConstant'
 import { MessageSection } from '../types/MessageSection'
 import { User } from '../types/User'
 import AudioMessageItem from './AudioMessageItem'
@@ -11,12 +13,14 @@ import SentMessageItem from './SentMessageItem'
 import UserItem from './UserItem'
 
 interface ConversationProps {
-  data: User | null
+  receiver: User | null
   messageSections: MessageSection[] | null
+  stompClient: Client
 }
 
-export default function Conversation({ data, messageSections }: ConversationProps) {
+export default function Conversation({ receiver, messageSections, stompClient }: ConversationProps) {
   const messagesEndRef = React.createRef<HTMLDivElement>()
+  const messageContentInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (messagesEndRef) {
@@ -24,11 +28,18 @@ export default function Conversation({ data, messageSections }: ConversationProp
     }
   }, [messageSections, messagesEndRef])
 
+  const onSendMessage = useCallback(() => {
+    if (stompClient) {
+      const content = messageContentInputRef.current?.value
+      stompClient.send(`/app/messages/${getPrinciple()?.id}/${receiver?.id}`, {}, content)
+    }
+  }, [stompClient])
+
   return (
     <div className='md:flex md:flex-col md:flex-auto h-screen md:p-6'>
       <div className='flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full'>
         <div className='flex flex-col h-full overflow-x-auto mb-4'>
-          <ChatHeader data={data} />
+          <ChatHeader data={receiver} />
           <div className='flex flex-col h-full  p-4'>
             <div className='grid grid-cols-12 gap-y-2'>
               {messageSections?.map((item, index) => {
@@ -38,7 +49,7 @@ export default function Conversation({ data, messageSections }: ConversationProp
             </div>
           </div>
         </div>
-        <MessageInputBar />
+        <MessageInputBar ref={messageContentInputRef} onSendMessage={onSendMessage} />
       </div>
     </div>
   )

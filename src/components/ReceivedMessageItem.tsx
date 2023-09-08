@@ -8,7 +8,7 @@ export interface MessageItemProps {
 
 export default function ReceivedMessageItem({ data, showSentTime }: MessageItemProps) {
   return (
-    <div className='col-start-1 md:col-end-8 col-end-13 p-3 rounded-lg'>
+    <div className='col-start-1 md:col-end-8 col-end-13 rounded-lg'>
       <div className='flex flex-row items-center'>
         <div className='flex flex-col'>
           <div className='flex flex-row'>
@@ -18,8 +18,10 @@ export default function ReceivedMessageItem({ data, showSentTime }: MessageItemP
             </div>
           </div>
           {
-            showSentTime && <div className='text-xs bottom-0 ms-[70px] mt-2 text-gray-500'>
-              {toTime(new Date(data.createdAt))}
+            showSentTime && <div className='mb-10'>
+              <div className='text-xs bottom-0 ms-[70px] mt-2 text-gray-500'>
+                {toTime(new Date(data.createdAt))}
+              </div>
             </div>
           }
         </div>
