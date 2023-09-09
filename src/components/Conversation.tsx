@@ -40,7 +40,7 @@ export default function Conversation({ receiver, messageSections, stompClient }:
       <div className='flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full'>
         <div className='flex flex-col h-full overflow-x-auto mb-4'>
           <ChatHeader data={receiver} />
-          <div className='flex flex-col h-full  p-4'>
+          <div className='flex flex-col h-full mt-[50px]  p-4'>
             <div className='grid grid-cols-12 gap-y-2'>
               {messageSections?.map((item, index) => {
                 return <MessageSectionItem key={index} data={item} />

@@ -10,7 +10,7 @@ export default function SentMessageItem({ data, showSentTime }: MessageItemProps
         <div className='flex flex-col'>
           <div className='flex flex-row'>
             <div className='mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl'>
-              <div>{data.content}</div>
+              <div className='text-sm'>{data.content}</div>
             </div>
             <div className='flex items-center justify-center h-10 w-10 rounded-full bg-purple-500 flex-shrink-0'>{data.sender.fullName[0]}</div>
           </div>
