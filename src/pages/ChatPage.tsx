@@ -83,8 +83,8 @@ function ChatPage() {
 
   return (
     <div className='container mx-auto'>
-      <div className='flex h-screen antialiased text-gray-800'>
-        <div className='flex flex-col md:flex-row h-full w-full'>
+      <div className='antialiased text-gray-800'>
+        <div className='flex flex-col md:flex-row h-screen w-screen'>
           <Conversation
             stompClient={stompClient}
             messageSections={messageSections}

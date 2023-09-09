@@ -36,12 +36,12 @@ export default function Conversation({ receiver, messageSections, stompClient }:
   }, [stompClient])
 
   return (
-    <div className='md:flex md:flex-col md:flex-auto h-screen md:p-6'>
+    <div className='md:flex md:flex-col md:flex-auto md:p-6'>
       <div className='flex flex-col flex-auto flex-shrink-0 bg-gray-100 h-full'>
         <div className='flex flex-col mb-4'>
           <ChatHeader data={receiver} />
-          <div className='flex flex-col h-full mt-[50px] p-4'>
-            <div className='grid grid-cols-12 gap-y-2 overflow-y-auto'>
+          <div className='h-full mt-[50px] p-4'>
+            <div className='flex flex-col overflow-y-auto'>
               {messageSections?.map((item, index) => {
                 return <MessageSectionItem key={index} data={item} />
               })}

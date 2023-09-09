@@ -7,7 +7,7 @@ interface MessageInputBarProps {
 type InputProps = React.HTMLProps<HTMLInputElement>
 
 const MessageInputBar = React.forwardRef<HTMLInputElement, MessageInputBarProps>(({ onSendMessage }, forwardRef) => (
-  <div className='fixed bottom-0 flex flex-row items-center h-16 rounded-xl bg-white w-full px-4'>
+  <div className='fixed z-50 bottom-0 flex flex-row items-center h-16 rounded-xl bg-white w-full px-4'>
     <div>
       <button className='flex items-center justify-center text-gray-400 hover:text-gray-600'>
         <svg
