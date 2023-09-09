@@ -32,6 +32,9 @@ export default function Conversation({ receiver, messageSections, stompClient }:
     if (stompClient) {
       const content = messageContentInputRef.current?.value
       stompClient.send(`/app/messages/${getPrinciple()?.id}/${receiver?.id}`, {}, content)
+      if (messageContentInputRef.current) {
+        messageContentInputRef.current.value = ''
+      }
     }
   }, [stompClient])
 
@@ -46,8 +49,8 @@ export default function Conversation({ receiver, messageSections, stompClient }:
                 return <MessageSectionItem key={index} data={item} />
               })}
             </div>
+            <div ref={messagesEndRef} />
           </div>
-          <div ref={messagesEndRef} />
         </div>
         <MessageInputBar ref={messageContentInputRef} onSendMessage={onSendMessage} />
       </div>
