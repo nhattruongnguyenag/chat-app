@@ -49,7 +49,7 @@ function ChatPage() {
   const [messageSections, setMessageSections] = useState<MessageSection[] | null>(null)
 
   useEffect(() => {
-    let url = SERVER_ADDRESS + 'api/users/' + username
+    let url = SERVER_ADDRESS + '/api/users/' + username
     fetch(url)
       .then((response) => response.json())
       .then((data) => {

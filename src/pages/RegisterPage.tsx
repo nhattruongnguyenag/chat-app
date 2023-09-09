@@ -31,7 +31,7 @@ export default function RegisterPage() {
       return
     }
 
-    const url = SERVER_ADDRESS + 'api/users'
+    const url = SERVER_ADDRESS + '/api/users'
 
     const data = {
       fullName: fullNameInput.current?.value,
@@ -55,7 +55,7 @@ export default function RegisterPage() {
   }
 
   const getUserFromToken = (token: string) => {
-    const url = SERVER_ADDRESS + 'api/users/token/' + token
+    const url = SERVER_ADDRESS + '/api/users/token/' + token
 
     fetch(url)
       .then((response) => response.json())

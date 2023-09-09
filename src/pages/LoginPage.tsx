@@ -13,7 +13,7 @@ export default function LoginPage() {
   const navigate = useNavigate()
 
   const login = () => {
-    const url = SERVER_ADDRESS + 'api/login'
+    const url = SERVER_ADDRESS + '/api/login'
     const data = {
       username: usernameInput.current?.value,
       password: passwordInput.current?.value
@@ -40,7 +40,7 @@ export default function LoginPage() {
   }
 
   const getUserFromToken = (token: string) => {
-    const url = SERVER_ADDRESS + 'api/users/token/' + token
+    const url = SERVER_ADDRESS + '/api/users/token/' + token
 
     fetch(url)
       .then((response) => response.json())
