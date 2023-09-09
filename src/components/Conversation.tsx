@@ -49,10 +49,10 @@ export default function Conversation({ receiver, messageSections, stompClient }:
                 return <MessageSectionItem key={index} data={item} />
               })}
             </div>
-            <div ref={messagesEndRef} />
           </div>
         </div>
         <MessageInputBar ref={messageContentInputRef} onSendMessage={onSendMessage} />
+        <div ref={messagesEndRef} />
       </div>
     </div>
   )
