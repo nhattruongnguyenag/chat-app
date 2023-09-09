@@ -1,12 +1,8 @@
-import { connect } from 'http2'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import SockJS from 'sockjs-client'
 import { Client, Frame, Message, over } from 'stompjs'
-import AppHeader from '../components/AppHeader'
 import Conversation from '../components/Conversation'
-import UserItem from '../components/UserItem'
-import UserLoginInfo from '../components/UserLoginInfo'
 import { getPrinciple, SERVER_ADDRESS } from '../constants/SystemConstant'
 import { MessageModel } from '../types/MessageModel'
 import { MessageSection } from '../types/MessageSection'
@@ -88,7 +84,7 @@ function ChatPage() {
   return (
     <div className='container mx-auto'>
       <div className='flex h-screen antialiased text-gray-800'>
-        <div className='flex flex-col md:flex-row h-full w-full overflow-x-auto'>
+        <div className='flex flex-col md:flex-row h-full w-full'>
           <Conversation
             stompClient={stompClient}
             messageSections={messageSections}
