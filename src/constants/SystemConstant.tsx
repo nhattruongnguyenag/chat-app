@@ -2,7 +2,7 @@ import { log } from 'console'
 import { MessageModel } from '../types/MessageModel'
 import { User } from '../types/User'
 
-export const SERVER_ADDRESS = 'http://localhost:8080/'
+export const SERVER_ADDRESS = 'http://103.69.193.140:8080/'
 
 export const getPrinciple = (): User | null => {
     const json = localStorage.getItem('principle')
