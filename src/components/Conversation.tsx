@@ -47,8 +47,8 @@ export default function Conversation({ receiver, messageSections, stompClient }:
               })}
             </div>
           </div>
+          <div ref={messagesEndRef} />
         </div>
-        <div ref={messagesEndRef} />
         <MessageInputBar ref={messageContentInputRef} onSendMessage={onSendMessage} />
       </div>
     </div>
