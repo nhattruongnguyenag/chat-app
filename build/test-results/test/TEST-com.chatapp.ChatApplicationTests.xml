@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.chatapp.ChatApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-09T00:28:07" hostname="lenovo" time="0.513">
+<testsuite name="com.chatapp.ChatApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-09T01:34:18" hostname="lenovo" time="0.53">
   <properties/>
-  <testcase name="contextLoads()" classname="com.chatapp.ChatApplicationTests" time="0.513"/>
-  <system-out><![CDATA[07:28:01.133 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.chatapp.ChatApplicationTests]: ChatApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-07:28:01.288 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.chatapp.ChatApplication for test class com.chatapp.ChatApplicationTests
+  <testcase name="contextLoads()" classname="com.chatapp.ChatApplicationTests" time="0.53"/>
+  <system-out><![CDATA[08:34:12.096 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.chatapp.ChatApplicationTests]: ChatApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:34:12.217 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.chatapp.ChatApplication for test class com.chatapp.ChatApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,19 +13,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.3)
 
-2023-09-09T07:28:01.785+07:00  INFO 34339 --- [    Test worker] com.chatapp.ChatApplicationTests         : Starting ChatApplicationTests using Java 17.0.8.1 with PID 34339 (started by lenovo in /media/lenovo/DULIEU/4-project/java/chat-app)
-2023-09-09T07:28:01.787+07:00  INFO 34339 --- [    Test worker] com.chatapp.ChatApplicationTests         : The following 1 profile is active: "pro"
-2023-09-09T07:28:02.706+07:00  INFO 34339 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-09T07:28:02.819+07:00  INFO 34339 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 103 ms. Found 2 JPA repository interfaces.
-2023-09-09T07:28:03.396+07:00  INFO 34339 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-09T07:28:03.472+07:00  INFO 34339 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
-2023-09-09T07:28:03.477+07:00  INFO 34339 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-09T07:28:03.665+07:00  INFO 34339 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-09T07:28:03.843+07:00  INFO 34339 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-09T07:28:03.865+07:00  INFO 34339 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-09T07:28:05.127+07:00 ERROR 34339 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2023-09-09T08:34:12.718+07:00  INFO 40644 --- [    Test worker] com.chatapp.ChatApplicationTests         : Starting ChatApplicationTests using Java 17.0.8.1 with PID 40644 (started by lenovo in /media/lenovo/DULIEU/4-project/java/chat-app)
+2023-09-09T08:34:12.719+07:00  INFO 40644 --- [    Test worker] com.chatapp.ChatApplicationTests         : The following 1 profile is active: "pro"
+2023-09-09T08:34:13.583+07:00  INFO 40644 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-09T08:34:13.682+07:00  INFO 40644 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 2 JPA repository interfaces.
+2023-09-09T08:34:14.244+07:00  INFO 40644 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-09T08:34:14.336+07:00  INFO 40644 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.7.Final
+2023-09-09T08:34:14.340+07:00  INFO 40644 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-09T08:34:14.527+07:00  INFO 40644 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-09T08:34:14.709+07:00  INFO 40644 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-09T08:34:14.732+07:00  INFO 40644 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-09T08:34:15.926+07:00 ERROR 40644 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
-java.sql.SQLException: null,  message from server: "Host '103.199.33.217' is not allowed to connect to this MySQL server"
+java.sql.SQLException: null,  message from server: "Host '113.23.30.223' is not allowed to connect to this MySQL server"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825) ~[mysql-connector-j-8.0.33.jar:8.0.33]
@@ -168,9 +168,9 @@ java.sql.SQLException: null,  message from server: "Host '103.199.33.217' is not
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2023-09-09T07:28:05.147+07:00  WARN 34339 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2023-09-09T08:34:15.941+07:00  WARN 40644 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
-java.sql.SQLException: null,  message from server: "Host '103.199.33.217' is not allowed to connect to this MySQL server"
+java.sql.SQLException: null,  message from server: "Host '113.23.30.223' is not allowed to connect to this MySQL server"
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
 	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825) ~[mysql-connector-j-8.0.33.jar:8.0.33]
@@ -313,16 +313,16 @@ java.sql.SQLException: null,  message from server: "Host '103.199.33.217' is not
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2023-09-09T07:28:05.185+07:00  WARN 34339 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2023-09-09T07:28:05.508+07:00  INFO 34339 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-09T07:28:06.425+07:00  INFO 34339 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-09T07:28:06.429+07:00  INFO 34339 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-09T07:28:07.050+07:00  WARN 34339 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-09T07:28:07.165+07:00  INFO 34339 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7a023e34, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@260f05ee, org.springframework.security.web.context.SecurityContextHolderFilter@38318d67, org.springframework.security.web.header.HeaderWriterFilter@309d54ac, org.springframework.security.web.authentication.logout.LogoutFilter@474deb4c, com.chatapp.config.JwtAuthenticationFilter@1c512bb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@12948e7a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@470ad01c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@65fe1f47, org.springframework.security.web.session.SessionManagementFilter@4c89c98a, org.springframework.security.web.access.ExceptionTranslationFilter@7f7f544a, org.springframework.security.web.access.intercept.AuthorizationFilter@c3a1d7f]
-2023-09-09T07:28:07.853+07:00  INFO 34339 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2023-09-09T07:28:07.856+07:00  INFO 34339 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6779959d]]
-2023-09-09T07:28:07.857+07:00  INFO 34339 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2023-09-09T07:28:07.873+07:00  INFO 34339 --- [    Test worker] com.chatapp.ChatApplicationTests         : Started ChatApplicationTests in 6.371 seconds (process running for 7.878)
+2023-09-09T08:34:15.973+07:00  WARN 40644 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-09-09T08:34:16.319+07:00  INFO 40644 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-09T08:34:17.237+07:00  INFO 40644 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-09T08:34:17.244+07:00  INFO 40644 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-09T08:34:17.919+07:00  WARN 40644 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-09T08:34:18.042+07:00  INFO 40644 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2111d7b9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a023e34, org.springframework.security.web.context.SecurityContextHolderFilter@7e24a2e2, org.springframework.security.web.header.HeaderWriterFilter@70b0dc92, org.springframework.security.web.authentication.logout.LogoutFilter@35975b05, com.chatapp.config.JwtAuthenticationFilter@11771fd6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3af6c672, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71db6703, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@260f05ee, org.springframework.security.web.session.SessionManagementFilter@15ca7322, org.springframework.security.web.access.ExceptionTranslationFilter@70680f88, org.springframework.security.web.access.intercept.AuthorizationFilter@5ce0f50a]
+2023-09-09T08:34:18.692+07:00  INFO 40644 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2023-09-09T08:34:18.694+07:00  INFO 40644 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@51d26fed]]
+2023-09-09T08:34:18.695+07:00  INFO 40644 --- [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2023-09-09T08:34:18.706+07:00  INFO 40644 --- [    Test worker] com.chatapp.ChatApplicationTests         : Started ChatApplicationTests in 6.281 seconds (process running for 7.41)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
