@@ -26,12 +26,17 @@ export default function LoginPage() {
       },
       body: JSON.stringify(data)
     })
-      .then((response) => response.json())
+      .then((response) => {
+          return response.json()
+      })
       .then((data) => {
         localStorage.setItem('token', JSON.stringify(data))
         getUserFromToken(data.token)
       })
-      .catch((error) => console.error('Error:', error))
+      .catch((error) => {
+        alert("Tên đăng nhập hoặc mật khẩu không đúng")
+        console.error('Error:', error)
+      })
   }
 
   const getUserFromToken = (token: string) => {

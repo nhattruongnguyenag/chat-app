@@ -61,7 +61,7 @@ function ChatPage() {
 
   useEffect(() => {
     const connect = () => {
-      let Sock = new SockJS('http://localhost:8080/chat-ws')
+      let Sock = new SockJS(SERVER_ADDRESS + '/chat-ws')
       stompClient = over(Sock)
       stompClient.connect({}, onConnected, onError)
     }

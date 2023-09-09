@@ -16,6 +16,21 @@ export default function RegisterPage() {
       return
     }
 
+    if (fullNameInput.current && fullNameInput.current.value.length === 0) {
+      alert('Họ tên không được để trống')
+      return
+    }
+
+    if (usernameInput.current && usernameInput.current.value.length === 0) {
+      alert('Tên đăng nhập bắt buộc phải điền')
+      return
+    }
+
+    if (passwordInput.current && passwordInput.current.value.length < 5) {
+      alert('Mật khẩu từ 6 ký tự trở lên')
+      return
+    }
+
     const url = SERVER_ADDRESS + 'api/users'
 
     const data = {
@@ -34,7 +49,6 @@ export default function RegisterPage() {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem('token', JSON.stringify(data))
-        console.log(data)
         getUserFromToken(data.token)
       })
       .catch((error) => console.error('Error:', error))

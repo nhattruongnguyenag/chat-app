@@ -6,7 +6,7 @@ import AppHeader from '../components/AppHeader'
 import Conversation from '../components/Conversation'
 import UserItem from '../components/UserItem'
 import UserLoginInfo from '../components/UserLoginInfo'
-import { getPrinciple } from '../constants/SystemConstant'
+import { getPrinciple, SERVER_ADDRESS } from '../constants/SystemConstant'
 import { User } from '../types/User'
 
 let stompClient: Client
@@ -16,7 +16,7 @@ function DashboardPage() {
 
   useEffect(() => {
     const connect = () => {
-      let Sock = new SockJS('http://localhost:8080/chat-ws')
+      let Sock = new SockJS(SERVER_ADDRESS + '/chat-ws')
       stompClient = over(Sock)
       stompClient.connect({}, onConnected, onError)
     }
