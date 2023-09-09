@@ -13,8 +13,8 @@ export default function ReceivedMessageItem({ data, showSentTime }: MessageItemP
         <div className='flex flex-col'>
           <div className='flex flex-row'>
             <div className='flex items-center justify-center h-10 w-10 rounded-full bg-indigo-200 flex-shrink-0'>{data.sender.fullName[0]}</div>
-            <div className='ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl'>
-              <div className='text-sm'>{data.content}</div>
+            <div className='ml-3bg-white py-2 px-4 shadow rounded-xl'>
+              <div className='text-[16px]'>{data.content}</div>
             </div>
           </div>
           {
