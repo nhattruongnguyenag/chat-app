@@ -25,22 +25,19 @@ public class TokenProvider implements Serializable {
     }
 
     public String extractUsernameFromToken(String token) {
-        return getSpecifiedClaim(token, Claims::getSubject);
+        final Claims claims = getClaims(token);
+        return claims.getSubject();
     }
 
     public Date extractExpirationDateFromToken(String token) {
-        return getSpecifiedClaim(token, Claims::getExpiration);
+        final Claims claims = getClaims(token);
+        return claims.getExpiration();
     }
 
     public Boolean isTokenNotExpired(String token) {
         final Date currentTime = new Date();
         final Date expiration = extractExpirationDateFromToken(token);
         return currentTime.before(expiration);
-    }
-
-    public <T> T getSpecifiedClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = getClaims(token);
-        return claimsResolver.apply(claims);
     }
 
     public Claims getClaims(String token) {
