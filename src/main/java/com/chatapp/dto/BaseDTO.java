@@ -1,6 +1,8 @@
 package com.chatapp.dto;
 
 import com.chatapp.util.DateTimeUtil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 import java.util.Date;
