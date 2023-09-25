@@ -3,7 +3,6 @@ package com.chatapp.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,5 +16,5 @@ public class RoleEntity extends BaseEntity {
     private String code;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private List<UserEntity> users = new ArrayList<>();
+    private List<UserEntity> users;
 }

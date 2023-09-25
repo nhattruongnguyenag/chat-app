@@ -25,11 +25,11 @@ public abstract class BaseEntity {
 	@LastModifiedDate
 	private Date updatedAt = new Date();
 	
-	@Column(name = "createdby")
-	@CreatedBy
-	private String createdBy;
+	// @Column(name = "createdby")
+	// @CreatedBy
+	// private String createdBy;
 	
-	@Column(name = "modifiedby")
-	@LastModifiedBy
-	private String modifiedBy;
+	// @Column(name = "modifiedby")
+	// @LastModifiedBy
+	// private String modifiedBy;
 }
